@@ -377,7 +377,6 @@ require('lazy').setup({
   },
 
   'hrsh7th/nvim-cmp',
-  'razzmatazz/csharp-language-server',
   'onsails/lspkind.nvim',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
@@ -855,7 +854,7 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        cs = { lsp_format = 'prefer' }, -- Prefers Roslyn LSP over standalone formatters
+        cs = { 'csharpier' },
 
         -- Fallback: tries prettierd first (for speed), then prettier if missing
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
