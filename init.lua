@@ -753,7 +753,13 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {
+          on_attach = function(client, bufnr)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.documentRangeFormattingProvider = false
+          end,
+        },
+
         -- omnisharp = {},
         --csharp_ls = {},
 
@@ -806,13 +812,13 @@ require('lazy').setup({
           function(server_name)
             local server = servers[server_name] or {}
 
-            if server_name == 'ts_ls' then
-              server.on_attach = function(client, bufnr)
-                -- Disable formatting capability
-                client.server_capabilities.documentFormattingProvider = false
-                client.server_capabilities.documentRangeFormattingProvider = false
-              end
-            end
+            -- if server_name == 'ts_ls' then
+            --   server.on_attach = function(client, bufnr)
+            --     -- Disable formatting capability
+            --     client.server_capabilities.documentFormattingProvider = false
+            --     client.server_capabilities.documentRangeFormattingProvider = false
+            --   end
+            -- end
 
             require('lspconfig')[server_name].setup(server)
           end,
@@ -841,18 +847,15 @@ require('lazy').setup({
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
+
         return {
           timeout_ms = 30000,
-          lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
+          lsp_fallback = false,
         }
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
         cs = { 'csharpier' },
-        javascript = { 'prettier' },
-        typescript = { 'prettier' },
-        javascriptreact = { 'prettier' },
-        typescriptreact = { 'prettier' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
