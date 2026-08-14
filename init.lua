@@ -855,7 +855,8 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
-        cs = { 'csharpier' },
+        cs = { lsp_format = 'prefer' }, -- Prefers Roslyn LSP over standalone formatters
+
         -- Fallback: tries prettierd first (for speed), then prettier if missing
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
