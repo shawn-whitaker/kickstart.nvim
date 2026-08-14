@@ -549,7 +549,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 
-      vim.keymap.set('n', '<leader>sc', '<cmd>Telescope colorscheme<CR>', { desc = '[S]earch [C]olorscheme' })
+      vim.keymap.set('n', '<leader>sc', '<cmd>Telescope colorscheme enable_preview=true<CR>', { desc = '[S]earch [C]olorscheme' })
 
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
@@ -1048,10 +1048,15 @@ require('lazy').setup({
     'Mofiqul/vscode.nvim',
     priority = 1000,
   },
-
   {
     'projekt0n/github-nvim-theme',
+    name = 'github-theme',
     priority = 1000,
+    config = function()
+      require('github-theme').setup {
+        -- Optional configuration options go here
+      }
+    end,
   },
 
   {
@@ -1085,11 +1090,6 @@ require('lazy').setup({
 
   {
     'bluz71/vim-moonfly-colors',
-    priority = 1000,
-  },
-
-  {
-    'projekt0n/github-nvim-theme',
     priority = 1000,
   },
 
