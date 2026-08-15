@@ -377,7 +377,6 @@ require('lazy').setup({
   },
 
   'hrsh7th/nvim-cmp',
-  'razzmatazz/csharp-language-server',
   'onsails/lspkind.nvim',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
