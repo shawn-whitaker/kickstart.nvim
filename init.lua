@@ -1347,3 +1347,23 @@ vim.keymap.set('n', '<leader>mt', '<cmd>MarkdownPreviewToggle<CR>', {
 vim.keymap.set('n', '<leader>ms', '<cmd>MarkdownPreviewStop<CR>', {
   desc = 'Stop Preview',
 })
+
+local function load_project_config()
+  local git_dir = vim.fs.find('.git', {
+    upward = true,
+    path = vim.fn.getcwd(),
+  })[1]
+
+  if not git_dir then
+    return
+  end
+
+  local project_root = vim.fs.dirname(git_dir)
+  local project_config = vim.fs.joinpath(project_root, '.nvim.lua')
+
+  if vim.uv.fs_stat(project_config) then
+    dofile(project_config)
+  end
+end
+
+load_project_config()
