@@ -365,8 +365,20 @@ require('lazy').setup({
   {
     'smoka7/hop.nvim',
     version = '*',
-    opts = {
-      keys = 'etovxqpdygfblzhckisuran',
+    config = function()
+      require('hop').setup {
+        keys = 'etovxqpdygfblzhckisuran',
+      }
+    end,
+    keys = {
+      {
+        'f',
+        function()
+          require('hop').hint_words()
+        end,
+        mode = 'n',
+        desc = 'Hop to word',
+      },
     },
   },
   {
