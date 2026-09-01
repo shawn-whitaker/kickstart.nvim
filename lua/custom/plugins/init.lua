@@ -2,4 +2,7 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+--
+-- My personal Neovim configuration
+print 'CUSTOM CONFIG LOADED V2!!'
 return {}
