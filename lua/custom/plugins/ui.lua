@@ -1,4 +1,3 @@
-print 'CUSTOM CONFIG LOADED FOR UI V3!!'
 return {
   {
     'folke/which-key.nvim',

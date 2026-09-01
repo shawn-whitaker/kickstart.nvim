@@ -1,5 +1,3 @@
-print 'CUSTOM CONFIG LOADED FOR THEMES V3!!'
-
 return {
   {
     'folke/tokyonight.nvim',
