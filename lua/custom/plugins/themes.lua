@@ -65,14 +65,15 @@ return {
     priority = 1000,
   },
 
-  {
-    'projekt0n/github-nvim-theme',
-    name = 'github-theme',
-    priority = 1000,
-    config = function()
-      require('github-theme').setup {}
-    end,
-  },
+  -- Error Loading It. Disabling it for now
+  -- {
+  --   'projekt0n/github-nvim-theme',
+  --   name = 'github-theme',
+  --   priority = 1000,
+  --   config = function()
+  --     require('github-theme').setup {}
+  --   end,
+  -- },
 
   {
     'navarasu/onedark.nvim',
