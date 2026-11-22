@@ -265,6 +265,11 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^9',
+    lazy = false,
+  },
   'https://github.com/tpope/vim-fugitive',
   {
     'https://github.com/cedarbaum/fugitive-azure-devops.vim',
