@@ -265,6 +265,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+  { 'mfussenegger/nvim-dap' },
   {
     'mrcjkb/rustaceanvim',
     version = '^9',
