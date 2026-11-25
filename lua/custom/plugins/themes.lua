@@ -2,10 +2,6 @@ return {
   {
     'folke/tokyonight.nvim',
     priority = 1000,
-    init = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-      vim.cmd.hi 'Comment gui=none'
-    end,
   },
 
   {
@@ -21,14 +17,44 @@ return {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
+    lazy = false,
     priority = 1000,
+    config = function()
+      require('catppuccin').setup {
+        flavour = 'latte',
+        term_colors = true,
+        styles = {
+          comments = {}, -- No italic styling for comments.
+        },
+      }
+    end,
   },
-
   {
     'EdenEast/nightfox.nvim',
+    lazy = false,
     priority = 1000,
-  },
+    opts = {
+      options = {
+        terminal_colors = true,
+      },
+    },
+    config = function(_, opts)
+      require('nightfox').setup(opts)
 
+      -- Reapply the contrast fix whenever Dayfox is selected.
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        group = vim.api.nvim_create_augroup('DayfoxTerminalContrast', { clear = true }),
+        pattern = 'dayfox',
+        callback = function()
+          vim.g.terminal_color_7 = '#505050'
+          vim.g.terminal_color_15 = '#303030'
+        end,
+      })
+
+      -- Activate Dayfox after registering the fix.
+      vim.cmd.colorscheme 'dayfox'
+    end,
+  },
   {
     'rose-pine/neovim',
     name = 'rose-pine',
