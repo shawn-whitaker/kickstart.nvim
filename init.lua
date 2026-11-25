@@ -268,7 +268,11 @@ require('lazy').setup({
   { 'mfussenegger/nvim-dap' },
   {
     'mrcjkb/rustaceanvim',
+    -- To avoid being surprised by breaking changes,
+    -- I recommend you set a version range
     version = '^9',
+    -- This plugin implements proper lazy-loading (see :h lua-plugin-lazy).
+    -- No need for lazy.nvim to lazy-load it.
     lazy = false,
   },
   'https://github.com/tpope/vim-fugitive',
@@ -744,6 +748,8 @@ require('lazy').setup({
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         -- javascript = { { "prettierd", "prettier" } },
+        --
+        rust = { 'rustfmt' },
       },
     },
   },
